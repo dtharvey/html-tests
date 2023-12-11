@@ -1,0 +1,34 @@
+---
+output: html_document
+---
+
+<!-- The following script makes it possible to use the mhchem -->
+
+<!-- latex package in a .Rmd file and to knit it into an .html file -->
+
+<!-- the font size is scaled to 90% to match text -->
+
+```{=html}
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+    extensions: ["[Contrib]/mhchem/mhchem.js"]
+}
+});
+MathJax.Hub.Config({ 
+        "HTML-CSS": { scale: 90 }, 
+        SVG: { linebreaks: { automatic:true } }, 
+ });
+</script>
+```
+### Solution 1: iFrame
+
+Both [#124](https://github.com/rstudio/htmltools/issues/124), which reported the problem of including a full html file---one with html tags---within a separate set of html tags, and [#382](https://github.com/rstudio/htmltools/pull/382), which resolved the problem, recommend using `tags$/iframe()` to hold the HTML document. Doing so using this file (`html_file2`) leads to the output below, which fails to properly display both the mathjax mathematical expression in **Example 1** and the mhchem chemical formula in **Example 2**; however, it does not throw out a warning regarding the file `html_file2.html` (just the warning regarding the file `html_file1.html`).
+
+**Question**: Why does embedding `html_file2.html` into an iframe fail to properly display the mathjax mathematical expression and the mhchem chemical formula? It seems likely to be a problem involving mathjax and iframes, but I have not been able to find a solution that works.
+
+### Sample Text: Same Rmarkdown Used For All Tabs
+
+**Example 1**. In order to span a wide range of concentrations, the sliders for concentration are logarithmic; the titrand's default concentration is (*using mathjax*) $10^{-1} = 0.10 \text{ M}$ and the titrant's default concentration is (*using Rmarkdown*) 10^-0.7^ = 0.2 M.
+
+**Example 2**. The monoprotic weak base guanine, (*using mhchem*) $\ce{C5H5N5O}$, is insoluble in water, but fully soluble in acid.

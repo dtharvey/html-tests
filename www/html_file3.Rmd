@@ -1,0 +1,37 @@
+---
+output: html_document
+---
+
+<!-- The following script makes it possible to use the mhchem -->
+<!-- latex package in a .Rmd file and to knit it into an .html file -->
+<!-- the font size is scaled to 90% to match text -->
+
+```{=html}
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+    extensions: ["[Contrib]/mhchem/mhchem.js"]
+}
+});
+MathJax.Hub.Config({
+        "HTML-CSS": { scale: 90 },
+        SVG: { linebreaks: { automatic:true } },
+ });
+</script>
+```
+
+### Solution 2: Delete Extra HTML Tags
+
+The original report, [#124](https://github.com/rstudio/htmltools/issues/124), on the problem of including a full html file---one with a set of html tags placed within a separate set of html tags---notes that `includeHTML()` is intended to be used with a file that contains an HTML fragment. To explore this, the file `html_file3.Rmd` in the `www` folder was knit to HTML and saved in the `www` folder as `html_file3.html` using the option `output: html_document`; that is, the same process used to create `html_file1.html`. This document was then opened in the editor and the !DOCTYPE tag and the set of opening and closing html tags were deleted and the document saved. As seen below, both the mathjax mathematical expression and the mhchem chemical formula are displayed correctly. No additional warning appears in the console.
+
+**Question**. Although this solution works in this case, it feels like a cheat. What potential problems might this solution create?
+
+### Sample Text: Same Rmarkdown Used For All Tabs
+
+**Example 1**. In order to span a wide range of concentrations, the sliders for concentration are logarithmic; the titrand's default concentration is (*using mathjax*) $10^{-1} = 0.10 \text{ M}$ and the titrant's default concentration is (*using Rmarkdown*) 10^-0.7^ = 0.2 M.
+
+**Example 2**. The monoprotic weak base guanine, (*using mhchem*) $\ce{C5H5N5O}$, is insoluble in water, but fully soluble in acid.
+
+
+
+

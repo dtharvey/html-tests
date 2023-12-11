@@ -1,0 +1,36 @@
+---
+output: html_document
+---
+
+<!-- The following script makes it possible to use the mhchem -->
+
+<!-- latex package in a .Rmd file and to knit it into an .html file -->
+
+<!-- the font size is scaled to 90% to match text -->
+
+```{=html}
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+    extensions: ["[Contrib]/mhchem/mhchem.js"]
+}
+});
+MathJax.Hub.Config({
+        "HTML-CSS": { scale: 90 },
+        SVG: { linebreaks: { automatic:true } },
+ });
+</script>
+```
+### The Problem
+
+The shiny application's user interface divides the screen into two columns. The left column displays text by passing a .html file to `includeHTML()`. The right column is used to display visual elements, such as the image shown here as a placeholder.
+
+This text file was written in Rmarkdown and saved in the `www` folder as `html_file1.Rmd`. It was then knitted into HTML using the option `output: html_document` and saved in the `www` folder as `html_file1.html`. The script at the beginning of the Rmarkdown file makes portions of the mhchem package available to mathjax. As seen below, when the shiny app runs, the text is displayed exactly as desired: see **Example 1** which uses mathjax to format the first mathematical expression and which uses Rmarkdown to format the second mathematical expression, and **Example 2**, which uses mhchem to display a chemical formula.
+
+The console, however, contains a warning that `includeHTML()` was provided with a complete HTML document (`html_file1.html`) and that this document should be placed, instead, within an iframe. The warning comes from [#382](https://github.com/rstudio/htmltools/pull/382), which resolved [#124](https://github.com/rstudio/htmltools/issues/124). The change took effect with the release of version 0.5.6 of the `htmltools` package on August 11, 2023. Although the text below displays as desired, the warning is likely to trouble users; thus, the need to fix the code so that a warning does not appear.
+
+### Sample Text: Same Rmarkdown Used For All Tabs
+
+**Example 1**. In order to span a wide range of concentrations, the sliders for concentration are logarithmic; the titrand's default concentration is (*using mathjax*) $10^{-1} = 0.10 \text{ M}$ and the titrant's default concentration is (*using Rmarkdown*) 10^-0.7^ = 0.2 M.
+
+**Example 2**. The monoprotic weak base guanine, (*using mhchem*) $\ce{C5H5N5O}$, is insoluble in water, but fully soluble in acid.

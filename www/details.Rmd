@@ -1,0 +1,20 @@
+---
+output: html_fragment
+---
+### Additional Details
+
+This minimal example uses the basic structure of a series of Shiny apps being developed for the teaching of analytical chemistry. At present there about 17 such Shiny apps in various stages of development, with the expectation of creating a library of 50+ applications. Resolving this issue now seems important to the project's on-going development.
+
+The following programs/packages/hardware were used to create this minimal example:
+
+* MacBook Pro (13-inch, M1, 2020) running Sonoma version 14.1.2
+* R version 4.3.2
+* RStudio version 2023.09.1+494
+* Shiny version 1.8.0
+* Shinythemes version 1.2.0
+* Rmarkdown version 2.25
+* knitr version 1.4.5
+* htmltools version 0.5.7
+
+The original example (`html_file1.html`) results in a warning when the app is launched. The other two html files (`html_file2.html` and `html_file3.html`) do not generate additional warnings. Note that this file (`details.html`) is an HTML fragment and, as expected, does not throw off a warning.
+
