@@ -2,11 +2,6 @@
 library(shiny)
 library(shinythemes)
 
-#add path for html file to place in iframe
-# addResourcePath(prefix = "htmltext", directoryPath = "text")
-
-# options(warn = -1)
-
 ui = navbarPage("HTML Tests",
                 theme = shinytheme("journal"),
                 header = tags$head(
