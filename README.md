@@ -4,4 +4,4 @@ To run locally, install the packages shiny and shinythemes (if not already insta
 
 library(shiny)
 
-shiny::runGitHub("html_tests","dtharvey")
+shiny::runGitHub("html-tests","dtharvey")
