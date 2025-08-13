@@ -18,3 +18,5 @@ The following programs/packages/hardware were used to create this minimal exampl
 
 The original example (`html_file1.html`) results in a warning when the app is launched. The other two html files (`html_file2.html` and `html_file3.html`) do not generate additional warnings. Note that this file (`details.html`) is an HTML fragment and, as expected, does not throw off a warning.
 
+$$\ce{Cu(OH)_4^2-}$$
+

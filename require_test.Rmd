@@ -1,0 +1,7 @@
+---
+output: html_document
+---
+
+$\require{mhchem}$
+
+$\ce{Cu(OH)_4^-}$

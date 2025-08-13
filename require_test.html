@@ -11,7 +11,7 @@
 
 
 
-<title>html_file2.knit</title>
+<title>require_test.knit</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -352,52 +352,8 @@ display: none;
 </div>
 
 
-<!-- The following script makes it possible to use the mhchem -->
-<!-- latex package in a .Rmd file and to knit it into an .html file -->
-<!-- the font size is scaled to 90% to match text -->
-<script type="text/x-mathjax-config">
-MathJax.Ajax.config.path["mhchem"] =
-  "https://cdnjs.cloudflare.com/ajax/libs/mathjax-mhchem/3.3.2";
-MathJax.Hub.Config({
-  TeX: {
-    extensions: ["[mhchem]/mhchem.js"]
-  }
-});
-MathJax.Hub.Config({ 
-        "HTML-CSS": { scale: 90 }, 
-        SVG: { linebreaks: { automatic:true } }, 
- });
-</script>
-<div id="solution-1-iframe" class="section level3">
-<h3>Solution 1: iFrame</h3>
-<p>Both <a href="https://github.com/rstudio/htmltools/issues/124">#124</a>, which
-reported the problem of including a full html file—one with html
-tags—within a separate set of html tags, and <a href="https://github.com/rstudio/htmltools/pull/382">#382</a>, which
-resolved the problem, recommend using <code>tags$/iframe()</code> to
-hold the HTML document. Doing so using this file
-(<code>html_file2</code>) leads to the output below, which fails to
-properly display both the mathjax mathematical expression in
-<strong>Example 1</strong> and the mhchem chemical formula in
-<strong>Example 2</strong>; however, it does not throw out a warning
-regarding the file <code>html_file2.html</code> (just the warning
-regarding the file <code>html_file1.html</code>).</p>
-<p><strong>Question</strong>: Why does embedding
-<code>html_file2.html</code> into an iframe fail to properly display the
-mathjax mathematical expression and the mhchem chemical formula? It
-seems likely to be a problem involving mathjax and iframes, but I have
-not been able to find a solution that works.</p>
-</div>
-<div id="sample-text-same-rmarkdown-used-for-all-tabs" class="section level3">
-<h3>Sample Text: Same Rmarkdown Used For All Tabs</h3>
-<p><strong>Example 1</strong>. In order to span a wide range of
-concentrations, the sliders for concentration are logarithmic; the
-titrand’s default concentration is (<em>using mathjax</em>) <span class="math inline">\(10^{-1} = 0.10 \text{ M}\)</span> and the
-titrant’s default concentration is (<em>using Rmarkdown</em>)
-10<sup>-0.7</sup> = 0.2 M.</p>
-<p><strong>Example 2</strong>. The monoprotic weak base guanine,
-(<em>using mhchem</em>) <span class="math inline">\(\ce{C5H5N5O}\)</span>, is insoluble in water, but
-fully soluble in acid.</p>
-</div>
+<p><span class="math inline">\(\require{mhchem}\)</span></p>
+<p><span class="math inline">\(\ce{Cu(OH)_4^-}\)</span></p>
 
 
 
